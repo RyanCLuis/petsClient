@@ -9,6 +9,7 @@
 // becuase our pet create and pet update will use the same form input fields
 
 import { useState } from 'react'
+import PetForm from '../shared/PetForm'
 
 const PetCreate = (props) => {
     // pull our our props
@@ -21,11 +22,47 @@ const PetCreate = (props) => {
         type: '',
         adoptable: false
     })
-    
+
+    const onChange = (e) => {
+        // e is the placeholder for the event
+        // e.persist() is bc react uses the virtual DOM, we want our form data to persist every time the page re-renders. Which will be a lot of times
+        e.persist()
+
+        // if you pass an argument to the callback function of your state hook updater, that argument is a placeholder for the most recent state, this will maintain anythign that is not being updated
+        setPet(prevPet => {
+            const updatedName = e.target.name
+            let updatedValue = e.target.value
+
+            // the above two items work great for stings
+            // however, we need to handle numbers and booleans differently
+            if (e.target.type === 'number') {
+                // if the target is a number, parst integer from the value
+                updatedValue = parseInt(updatedValue)
+            }
+
+            // to handle our checkbox, we need to tekk it when to send true and when to send false. Because the default values for a checkbox are 'checked' or 'unchecked', we need to convert those to the appropriate boolean values
+            if (updatedName === 'adoptable' && e.target.checked) {
+                updatedValue = true
+            } else if (updatedName === 'adoptable' && !e.target.checked) {
+                updatedValue = false
+            }
+
+            // this will actuallt build our pet object
+            // we grab an attribute name, and assign the respective value
+            const updatedPet = { [updatedName]: updatedValue }
+
+            // to keep all the old stuff, and add newly typed letters/numbers etc
+            return {...prevPet, ...updatedPet}
+        })
+    }
+    console.log('the pet in PetCreate', pet)
     return (
-        <div>
-            <h1>Create Pet Component</h1>
-        </div>
+        <PetForm
+            pet={pet}
+            handleChange={onChange}
+            handleSubmit={() => console.log('submit')}
+            heading='Create a Pet'
+        />
     )
 }
 
