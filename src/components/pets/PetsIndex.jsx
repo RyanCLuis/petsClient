@@ -34,7 +34,21 @@ const PetsIndex = (props) => {
 				console.log('use Effect hook ran')
 				setPets(res.data.pets)
 			})
-			.catch(error => console.error)
+            .then(() => {
+                msgAlert({
+                    heading: 'Success!',
+                    message: 'Got all the pets!',
+                    variant: 'success'
+                })
+            })
+			.catch(error => {
+                msgAlert({
+                    heading: 'Oh no!',
+                    message: 'something went wrong!',
+                    variant: 'danger'
+                })
+                setError(true)
+            })
 	}, [])
 
 	// WE NEVER EVER DO THIS:
@@ -43,7 +57,7 @@ const PetsIndex = (props) => {
 	// 	.catch(err => console.log(err))
 	// API calls need to happen in an effect hook, or as the result of a singular action
 	// (like a form submission)
-	console.log('the pets in PetsIndex: \n', pets)
+	// console.log('the pets in PetsIndex: \n', pets)
 
     // we need to handle multiple states of our data
     // what if we have an error?
