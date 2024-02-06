@@ -34,13 +34,6 @@ const PetsIndex = (props) => {
 				console.log('use Effect hook ran')
 				setPets(res.data.pets)
 			})
-            .then(() => {
-                msgAlert({
-                    heading: 'Success!',
-                    message: 'Got all the pets!',
-                    variant: 'success'
-                })
-            })
 			.catch(error => {
                 msgAlert({
                     heading: 'Oh no!',
@@ -86,7 +79,8 @@ const PetsIndex = (props) => {
                     </Link>
                 </Card.Text>
                 { pet.owner ?
-                    <Card.Footer>owner: {pet.owner.email}</Card.Footer>
+                    <Card.Footer>owner: {pet.owner.email}
+                    </Card.Footer>
                     :
                     null
                 }

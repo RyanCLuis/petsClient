@@ -33,6 +33,7 @@ const PetCreate = (props) => {
         e.persist()
 
         // if you pass an argument to the callback function of your state hook updater, that argument is a placeholder for the most recent state, this will maintain anythign that is not being updated
+        // prevPet is a placeholder(parameter) for the LAST condition of our state.
         setPet(prevPet => {
             const updatedName = e.target.name
             let updatedValue = e.target.value
