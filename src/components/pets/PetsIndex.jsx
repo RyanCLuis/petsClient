@@ -6,6 +6,7 @@ import { getAllPets } from "../../api/pet"
 import LoadingScreen from '../shared/LoadingScreen'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import messages from '../shared/AutoDismissAlert/messages'
 
 // react allows you to create something called a styling object
 const cardContainerLayout = {
@@ -37,7 +38,7 @@ const PetsIndex = (props) => {
 			.catch(error => {
                 msgAlert({
                     heading: 'Oh no!',
-                    message: 'something went wrong!',
+                    message: messages.generalError,
                     variant: 'danger'
                 })
                 setError(true)
