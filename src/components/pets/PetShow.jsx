@@ -24,8 +24,7 @@ const PetShow = (props) => {
     // this is a boolean, that we can switch between to trigger a page re-render
     const [updated, setUpdated] = useState(false)
 
-
-    // this gives us a function we can use to navigate via react router
+    // this gives us a function we can use to navigate via react-router
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -39,8 +38,8 @@ const PetShow = (props) => {
                 })
             })
     }, [updated])
-
-     // this is an api call function, which means we'll need to handle the promise chain.
+    
+    // this is an api call function, which means we'll need to handle the promise chain.
     // this means sending appropriate messages, as well as navigating upon success
     const setPetFree = () => {
         // we want to remove the pet
