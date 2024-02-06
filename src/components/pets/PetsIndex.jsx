@@ -80,8 +80,7 @@ const PetsIndex = (props) => {
                     </Link>
                 </Card.Text>
                 { pet.owner ?
-                    <Card.Footer>owner: {pet.owner.email}
-                    </Card.Footer>
+                    <Card.Footer>owner: {pet.owner.email}</Card.Footer>
                     :
                     null
                 }

@@ -17,30 +17,30 @@ import PetCreate from './components/pets/PetCreate'
 
 const App = () => {
 
-    const [user, setUser] = useState(null)
-    const [msgAlerts, setMsgAlerts] = useState([])
+	const [user, setUser] = useState(null)
+	const [msgAlerts, setMsgAlerts] = useState([])
 
 	useEffect(() => {
-		// access local storage
+		// access localStorage
 		const loggedInUser = localStorage.getItem('user')
 
 		if (loggedInUser) {
-			// we need to parse the JSON string back into an object
+			// we need to parse the json string
 			const foundUser = JSON.parse(loggedInUser)
-			// then we can set the user in state
+			// then set that saved user in state
 			setUser(foundUser)
 		}
 	}, [])
 
-    console.log('user in app', user)
-    console.log('message alerts', msgAlerts)
+	console.log('user in app', user)
+	console.log('message alerts', msgAlerts)
 
-    const clearUser = () => {
-    console.log('clear user ran')
-	// to clear the user saved in local storage
+	const clearUser = () => {
+		console.log('clear user ran')
+		// to clear the user saved in local storage
 		localStorage.removeItem('user')
-	// to clear the user in state
-    setUser(null)
+		// to clear the user saved in state
+		setUser(null)
 	}
 
 	const deleteAlert = (id) => {
@@ -54,7 +54,7 @@ const App = () => {
 		setMsgAlerts(() => {
 			return (
 				[{ heading, message, variant, id }]
-			)
+      		)
 		})
 	}
 
@@ -74,30 +74,30 @@ const App = () => {
 				<Route
 					path='/sign-out'
 					element={
-						<RequireAuth user={user}>
+					<RequireAuth user={user}>
 						<SignOut msgAlert={msgAlert} clearUser={clearUser} user={user} />
-						</RequireAuth>
+					</RequireAuth>
 					}
 				/>
 				<Route
 					path='/change-password'
 					element={
-						<RequireAuth user={user}>
+					<RequireAuth user={user}>
 						<ChangePassword msgAlert={msgAlert} user={user} />
-						</RequireAuth>}
+					</RequireAuth>}
 				/>
 				<Route 
 					path='/create-pet'
 					element={
-						<RequireAuth user={user}>
-							<PetCreate msgAlert={msgAlert} user={user} />
+						<RequireAuth user={user} >
+							<PetCreate msgAlert={msgAlert} user={user}/>
 						</RequireAuth>
 					}
 				/>
-				<Route
-					path='/pets/:petId'
+				<Route 
+					path='pets/:petId'
 					element={
-						<PetShow user={user}msgAlert={msgAlert} />
+						<PetShow user={user} msgAlert={msgAlert}/>
 					}
 				/>
 			</Routes>

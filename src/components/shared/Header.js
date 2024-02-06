@@ -29,10 +29,10 @@ const authenticatedOptions = (
 const unauthenticatedOptions = (
 	<>
         <Nav.Item className='m-2'>
-			<Link to='sign-up' style={linkStyle}>Sign Up</Link>
+		    <Link to='sign-up' style={linkStyle}>Sign Up</Link>
         </Nav.Item>
         <Nav.Item className='m-2'>
-			<Link to='sign-in' style={linkStyle}>Sign In</Link>
+		    <Link to='sign-in' style={linkStyle}>Sign In</Link>
         </Nav.Item>
 	</>
 )
@@ -51,7 +51,7 @@ const Header = ({ user }) => (
 	<Navbar bg='primary' variant='dark' expand='md'>
 		<Navbar.Brand className='m-2'>
             <Link to='/' style={linkStyle}>
-                Pets
+                Apple Pies Pets
             </Link>
         </Navbar.Brand>
 		<Navbar.Toggle aria-controls='basic-navbar-nav' />

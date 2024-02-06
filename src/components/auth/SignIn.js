@@ -24,11 +24,11 @@ const SignIn = (props) => {
 		signIn(credentials)
 			.then((res) => {
                 setUser(res.data.user)
-                
-                // to store a JSON string in local storage,
+
+                // to store a JSON string in localStorage, 
                 // which has a function called 'setItem'
                 const userJSON = JSON.stringify(res.data.user)
-                // localStorage.setItem takes two arguments -> name of the data, calue
+                // localStorage.setItem takes 2 arguments -> name of the data, value
                 localStorage.setItem('user', userJSON)
             })
 			.then(() =>
